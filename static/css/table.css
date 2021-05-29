@@ -1,0 +1,5 @@
+.strike {
+  text-decoration: line-through;
+  color: red;
+  opacity: 0.4;
+}
