@@ -1,0 +1,52 @@
+{% include 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static '/css/register.css' %}">
+    <title>Register</title>
+</head>
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+<body>
+  <div class="container" style="background: #007bff linear-gradient(to right, #0062E6, #33AEFF)">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+             <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body">
+            <h3 class="card-title ">Welcome back!</h3>
+            <form class="form-signin" method="post">
+              {% csrf_token %}
+              <div class="form-label-group">
+                <input type="text" id="inputUserame" name="username" class="form-control" placeholder="Username" required autofocus >
+                <label for="inputUserame">Username</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                <label for="inputPassword">Password</label>
+              </div>
+
+              {% for message in messages %}
+                {{message}}
+              {% endfor %}
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">SIGN IN</button>
+              <a class="d-block text-center mt-2 small" href="#">Forgot assword?</a>
+              <a class="d-block text-center mt-2 small" href="{% url 'register' %}">Register</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br><br>
+</body>
+
+</html>
+{% endblock %}
